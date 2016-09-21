@@ -15,7 +15,7 @@ namespace NBetting.Web.Controllers.Example
 
     public class ExampleCommandHandler : ICommandHandler<ExampleCommand>
     {
-        public void Execute(ExampleCommand command)
+        public void Handle(ExampleCommand command)
         {
             using (var context = new BettingContext())
             {

@@ -11,7 +11,7 @@ namespace NBetting.Web.Controllers
         public IActionResult Index()
         {
             //var handler = new ExampleCommandHandler();
-            //handler.Execute(new ExampleCommand {Name = "name #1"});
+            //handler.Handle(new ExampleCommand {Name = "name #1"});
 
             var handler = new ExampleQueryHandler();
             var team = handler.Execute(new ExampleQuery());
