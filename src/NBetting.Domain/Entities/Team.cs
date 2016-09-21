@@ -6,6 +6,6 @@
 
         public Tournament Tournament { get; set; }
 
-        public int TournamentId { get; set; }
+        public int? TournamentId { get; set; }
     }
 }

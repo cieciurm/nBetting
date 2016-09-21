@@ -11,18 +11,16 @@ namespace NBetting.Domain.Entities
 
         public Team Team1 { get; set; }
 
-        public int Team1Id { get; set; }
+        public int? Team1Id { get; set; }
 
         public Team Team2 { get; set; }
 
-        public int Team2Id { get; set; }
+        public int? Team2Id { get; set; }
 
         public Tournament Tournament { get; set; }
 
         public int TournamentId { get; set; }
 
-        public Score Team1Score { get; set; }
-
-        public Score Team2Score { get; set; }
+        public Score Score { get; set; }
     }
 }

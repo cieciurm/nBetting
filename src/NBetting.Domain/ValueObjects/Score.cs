@@ -4,10 +4,8 @@ namespace NBetting.Domain.ValueObjects
 {
     public class Score
     {
-        public Team Team { get; set; }
+        public byte Team1Score { get; set; }
 
-        public int TeamId { get; set; }
-
-        public byte TeamScore { get; set; }
+        public byte Team2Score { get; set; }
     }
 }

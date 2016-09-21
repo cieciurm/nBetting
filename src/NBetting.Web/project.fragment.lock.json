@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "exports": {
+    "NBetting.Domain/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/Debug/NBetting.Domain.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/NBetting.Domain.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/NBetting.Domain.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "NBetting.EFMapping/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5.2",
+      "compile": {
+        "bin/Debug/NBetting.EFMapping.dll": {}
+      },
+      "runtime": {
+        "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.SqlServer.dll": {},
+        "../packages/EntityFramework.6.1.3/lib/net45/EntityFramework.dll": {},
+        "bin/Debug/NBetting.EFMapping.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/NBetting.EFMapping.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

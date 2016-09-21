@@ -10,9 +10,9 @@ namespace NBetting.Domain.Entities
 
         public bool IsDeleted { get; set; }
 
-        public DateTime DeleteDate { get; set; }
+        public DateTime? DeleteDate { get; set; }
 
-        public Entity()
+        protected Entity()
         {
             CreationDate = DateTime.Now;
         }
