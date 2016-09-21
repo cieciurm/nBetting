@@ -1,0 +1,16 @@
+{
+  "name": "asp.net",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "gulp": "3.8.11",
+    "gulp-concat": "2.5.2",
+    "gulp-cssmin": "0.1.7",
+    "gulp-uglify": "1.2.0",
+    "rimraf": "2.2.8",
+    "angular": "1.5.5",
+    "vinyl-source-stream": "1.1.0",
+    "browserify": "13.1.0",
+    "angular-route": "1.5.8"
+  }
+}
