@@ -1,5 +1,4 @@
-﻿/// <binding Clean='clean' />
-"use strict";
+﻿"use strict";
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),
@@ -23,35 +22,8 @@ var paths = {
     main: webroot + "js/app/app.js"
 };
 
-gulp.task("clean:js", function (cb) {
-    rimraf(paths.concatJsDest, cb);
-});
-
-gulp.task("clean:css", function (cb) {
-    rimraf(paths.concatCssDest, cb);
-});
-
-gulp.task("clean", ["clean:js", "clean:css"]);
-
-gulp.task("min:js", function () {
-    return gulp.src([paths.js, "!" + paths.minJs], { base: "." })
-        .pipe(concat(paths.concatJsDest))
-        .pipe(gulp.dest("."));
-});
-
-
-
-
-
-gulp.task("min:css", function () {
-    return gulp.src([paths.css, "!" + paths.minCss])
-        .pipe(concat(paths.concatCssDest))
-        .pipe(cssmin())
-        .pipe(gulp.dest("."));
-});
-
-
-gulp.task('build-app', function () {
+var buildAppTaskName = 'build-app';
+gulp.task(buildAppTaskName, function () {
     return browserify(paths.main)
         .bundle()
         .on("error", function (err) {
@@ -61,6 +33,4 @@ gulp.task('build-app', function () {
         .pipe(gulp.dest(webroot + "js"));
 });
 
-
-gulp.task("min", ["min:js", "min:css"]);
-gulp.task("build", ["build-app"]);
+gulp.task("default", [buildAppTaskName]);
