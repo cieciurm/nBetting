@@ -255,5 +255,5 @@ paket-files/
 .idea/
 *.sln.iml
 
-wwwroot/js/site.js
-wwwroot/_references.js
+**/wwwroot/js/site.js
+**/wwwroot/_references.js
