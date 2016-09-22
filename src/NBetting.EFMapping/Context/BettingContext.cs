@@ -21,6 +21,11 @@ namespace NBetting.EFMapping.Context
         {
         }
 
+        public DbSet<TEntity> DbSet<TEntity>() where TEntity : Entity
+        {
+            return Set<TEntity>();
+        }
+
         public int Commit()
         {
             return SaveChanges();

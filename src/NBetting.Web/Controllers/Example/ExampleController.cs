@@ -23,7 +23,7 @@ namespace NBetting.Web.Controllers
 
         public IActionResult Index()
         {
-            _eventPublisher.Publish(new ExampleEvent());
+            var teams = _queryExecutor.Execute(new ExampleQuery());
             return Ok();
         }
     }

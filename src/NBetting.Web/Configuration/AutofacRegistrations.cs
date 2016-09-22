@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using Autofac;
+using NBetting.EFMapping.Context;
 using NBetting.Web.Infrastructure.Commands;
 using NBetting.Web.Infrastructure.Events;
 using NBetting.Web.Infrastructure.Queries;
@@ -20,6 +17,7 @@ namespace NBetting.Web.Configuration
 
         public static void RegisterServices(ContainerBuilder builder)
         {
+            builder.RegisterType<BettingContext>().As<IBettingContext>().InstancePerLifetimeScope();
         }
 
         public static void RegisterExecutors(ContainerBuilder builder)
@@ -31,13 +29,13 @@ namespace NBetting.Web.Configuration
             var assembly = Assembly.GetAssembly(typeof(AssemblyMarker));
 
             builder.RegisterAssemblyTypes(assembly)
-                .AsClosedTypesOf(typeof(ICommandHandler<>)).InstancePerDependency();
+                .AsClosedTypesOf(typeof(ICommandHandler<>));
 
             builder.RegisterAssemblyTypes(assembly)
-                .AsClosedTypesOf(typeof(IQueryHandler<,>)).InstancePerDependency();
+                .AsClosedTypesOf(typeof(IQueryHandler<,>));
 
             builder.RegisterAssemblyTypes(assembly)
-                .AsClosedTypesOf(typeof(IEventHandler<>)).InstancePerDependency();
+                .AsClosedTypesOf(typeof(IEventHandler<>));
         }
     }
 }

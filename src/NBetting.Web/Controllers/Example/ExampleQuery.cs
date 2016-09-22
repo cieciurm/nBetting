@@ -11,14 +11,17 @@ namespace NBetting.Web.Controllers.Example
 
     public class ExampleQueryHandler : IQueryHandler<ExampleQuery, Team>
     {
+        private readonly IBettingContext _context;
+
+        public ExampleQueryHandler(IBettingContext context)
+        {
+            _context = context;
+        }
+
         public Team Handle(ExampleQuery query)
         {
-            using (var context = new BettingContext())
-            {
-                var team = context.Teams.FirstOrDefault();
-
-                return team;
-            }
+            var team = _context.DbSet<Team>().FirstOrDefault();
+            return team;
         }
     }
 }
