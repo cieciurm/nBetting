@@ -1,6 +1,6 @@
 {
   "name": "asp.net",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "devDependencies": {
     "gulp": "3.8.11",
@@ -11,6 +11,8 @@
     "angular": "1.5.5",
     "vinyl-source-stream": "1.1.0",
     "browserify": "13.1.0",
-    "angular-route": "1.5.8"
+    "angular-route": "1.5.8",
+    "jasmine": "2.5.2",
+    "angular-mocks": "1.5.8"
   }
 }
