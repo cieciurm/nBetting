@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
 using NBetting.Web.Infrastructure.Commands;
+using NBetting.Web.Infrastructure.Events;
 using NBetting.Web.Infrastructure.Queries;
 
 namespace NBetting.Web.Configuration
@@ -25,6 +26,7 @@ namespace NBetting.Web.Configuration
         {
             builder.RegisterType<CommandExecutor>().As<ICommandExecutor>();
             builder.RegisterType<QueryExecutor>().As<IQueryExecutor>();
+            builder.RegisterType<EventPublisher>().As<IEventPublisher>();
 
             var assembly = Assembly.GetAssembly(typeof(AssemblyMarker));
 
@@ -33,6 +35,9 @@ namespace NBetting.Web.Configuration
 
             builder.RegisterAssemblyTypes(assembly)
                 .AsClosedTypesOf(typeof(IQueryHandler<,>)).InstancePerDependency();
+
+            builder.RegisterAssemblyTypes(assembly)
+                .AsClosedTypesOf(typeof(IEventHandler<>)).InstancePerDependency();
         }
     }
 }

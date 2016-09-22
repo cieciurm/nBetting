@@ -3,6 +3,7 @@ using NBetting.Domain.Entities;
 using NBetting.EFMapping.Context;
 using NBetting.Web.Controllers.Example;
 using NBetting.Web.Infrastructure.Commands;
+using NBetting.Web.Infrastructure.Events;
 using NBetting.Web.Infrastructure.Queries;
 
 namespace NBetting.Web.Controllers
@@ -11,16 +12,18 @@ namespace NBetting.Web.Controllers
     {
         private readonly ICommandExecutor _commandExecutor;
         private readonly IQueryExecutor _queryExecutor;
+        private readonly IEventPublisher _eventPublisher;
 
-        public ExampleController(ICommandExecutor commandExecutor, IQueryExecutor queryExecutor)
+        public ExampleController(ICommandExecutor commandExecutor, IQueryExecutor queryExecutor, IEventPublisher eventPublisher)
         {
             _commandExecutor = commandExecutor;
             _queryExecutor = queryExecutor;
+            _eventPublisher = eventPublisher;
         }
 
         public IActionResult Index()
         {
-            _queryExecutor.Execute(new ExampleQuery());
+            _eventPublisher.Publish(new ExampleEvent());
             return Ok();
         }
     }
