@@ -1,14 +1,9 @@
 ﻿'use strict';
+
 var angular = require('angular');
-var HomeCtrl = require('./homeController');
+var homeCtrl = require('./homeController');
 
-var Home = {
-    name: 'NBetting.Home',
-    homeController: HomeCtrl
-};
+var HomeModule = angular.module('NBetting.Home', [])
+                .controller(homeCtrl.name, homeCtrl);
 
-Home.ngModule = angular.module(Home.name, [])
-        .controller(Home.homeController.name, Home.homeController);
-
-
-module.exports = Home;
+module.exports = HomeModule;

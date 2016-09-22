@@ -2,7 +2,7 @@
 
 function HomeController() {
         var vm = this;
-        vm.test = '8===D';
+        vm.test = 'WORKING';
 }   
 
 module.exports = HomeController;
