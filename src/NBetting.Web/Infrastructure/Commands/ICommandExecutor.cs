@@ -18,6 +18,9 @@ namespace NBetting.Web.Infrastructure.Commands
 
         public void Execute(ICommand command)
         {
+            if(command == null)
+                throw new ArgumentNullException(nameof(command));
+
             var handlerType = typeof(ICommandHandler<>).MakeGenericType(command.GetType());
             dynamic handler = _serviceProvider.GetService(handlerType);
             handler.Handle((dynamic)command);

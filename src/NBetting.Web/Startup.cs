@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NBetting.Web.Configuration;
 using NBetting.Web.Controllers.Example;
 using NBetting.Web.Infrastructure.Commands;
 
@@ -35,16 +36,7 @@ namespace NBetting.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-
-            var builder = new ContainerBuilder();
-
-            builder.RegisterType<CommandExecutor>().As<ICommandExecutor>();
-            var assemblyServices = Assembly.Load("NBetting.Web");
-            builder.RegisterAssemblyTypes(assemblyServices)
-                .AsClosedTypesOf(typeof(ICommandHandler<>)).InstancePerDependency();
-
-            builder.Populate(services);
-            ApplicationContainer = builder.Build();
+            ApplicationContainer = AutofacConfiguration.BuildContainer(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

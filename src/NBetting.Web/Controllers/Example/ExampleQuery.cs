@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using NBetting.Domain.Entities;
 using NBetting.EFMapping.Context;
 using NBetting.Web.Infrastructure.Queries;
@@ -14,7 +11,7 @@ namespace NBetting.Web.Controllers.Example
 
     public class ExampleQueryHandler : IQueryHandler<ExampleQuery, Team>
     {
-        public Team Execute(ExampleQuery query)
+        public Team Handle(ExampleQuery query)
         {
             using (var context = new BettingContext())
             {

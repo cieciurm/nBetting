@@ -3,20 +3,25 @@ using NBetting.Domain.Entities;
 using NBetting.EFMapping.Context;
 using NBetting.Web.Controllers.Example;
 using NBetting.Web.Infrastructure.Commands;
+using NBetting.Web.Infrastructure.Queries;
 
 namespace NBetting.Web.Controllers
 {
     public class ExampleController : Controller
     {
+        private readonly ICommandExecutor _commandExecutor;
+        private readonly IQueryExecutor _queryExecutor;
+
+        public ExampleController(ICommandExecutor commandExecutor, IQueryExecutor queryExecutor)
+        {
+            _commandExecutor = commandExecutor;
+            _queryExecutor = queryExecutor;
+        }
+
         public IActionResult Index()
         {
-            //var handler = new ExampleCommandHandler();
-            //handler.Handle(new ExampleCommand {Name = "name #1"});
-
-            var handler = new ExampleQueryHandler();
-            var team = handler.Execute(new ExampleQuery());
-
-            return Ok(team);
+            _queryExecutor.Execute(new ExampleQuery());
+            return Ok();
         }
     }
 
