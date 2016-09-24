@@ -1,0 +1,19 @@
+﻿<form>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" ng-model="$ctrl.viewModel.name" placeholder="Tournament name">
+    </div>
+    <div class="form-group">
+        <label for="name">Description</label>
+        <textarea class="form-control" id="description" ng-model="$ctrl.viewModel.description" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Start date</label>
+        <datepicker date="$ctrl.viewModel.startDate"></datepicker>
+    </div>
+    <div class="form-group">
+        <label>End date</label>
+        <datepicker date="$ctrl.viewModel.endDate"></datepicker>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="$ctrl.save($ctrl.viewModel)">Save</button>
+</form>

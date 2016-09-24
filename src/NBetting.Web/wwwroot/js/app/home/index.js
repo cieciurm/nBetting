@@ -1,9 +1,21 @@
 ﻿'use strict';
 
 var angular = require('angular');
-var homeCtrl = require('./homeController');
+var ngRoute = require('angular-route');
 
-var HomeModule = angular.module('NBetting.Home', [])
-                .controller(homeCtrl.name, homeCtrl);
+var homeCtrl = require('./HomeController');
 
-module.exports = HomeModule;
+var HomeModule = angular.module('NBetting.Home', [ngRoute])
+    .controller(homeCtrl.name, homeCtrl);
+
+HomeModule.config(function($routeProvider) {
+    $routeProvider
+        .when("/home", {
+            templateUrl: 'views/Home/index.html',
+            controller: homeCtrl.name,
+            controllerAs: 'ctrl',
+            caseInsensitiveMatch: true
+        });
+});
+
+module.exports = HomeModule.name;

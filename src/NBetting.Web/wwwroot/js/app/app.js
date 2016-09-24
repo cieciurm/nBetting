@@ -6,6 +6,13 @@ var router = require('./router.js');
 (function() {
     var appName = "NBetting";
     var home = require('./home');
-    var app = angular.module(appName, [ngRoute, home.name]);
+    var addEditTournament = require('./addEditTournament');
+
+    var app = angular.module(appName, [
+        ngRoute,
+        home,
+        addEditTournament
+    ]);
+
     app.config(router);
 })();
