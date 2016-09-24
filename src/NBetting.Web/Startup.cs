@@ -58,9 +58,15 @@ namespace NBetting.Web
             app.UseStaticFiles();
             app.UseMvc(routes =>
             {
+                routes.MapRoute(name: "Api",
+                    template: "api/{controller}/{action}"
+                );
+
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    name: "Catchall",
+                    template: "{*.}",
+                    defaults: new { controller = "Home", action = "Index" }
+                );
             });
 
             app.ApplicationServices = new AutofacServiceProvider(ApplicationContainer);
