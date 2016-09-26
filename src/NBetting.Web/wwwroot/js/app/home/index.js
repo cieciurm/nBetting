@@ -2,11 +2,15 @@
 
 var angular = require('angular');
 var ngRoute = require('angular-route');
+var tournamentService = require('./services/tournamentService');
+var myTournamentsComponent = require('./components/myTournamentsComponent');
 
 var homeCtrl = require('./HomeController');
 
 var HomeModule = angular.module('NBetting.Home', [ngRoute])
-    .controller(homeCtrl.name, homeCtrl);
+                        .service(tournamentService.name, tournamentService)
+                        .component(myTournamentsComponent.name, myTournamentsComponent)
+                        .controller(homeCtrl.name, homeCtrl);
 
 HomeModule.config(function($routeProvider) {
     $routeProvider
