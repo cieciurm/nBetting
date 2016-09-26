@@ -1,12 +1,9 @@
 ﻿function MyTournamentsController(tournamentService) {
     var vm = this;
-    vm.myTournaments = [];
 
-    function getData() {
+    this.$onInit = function () {
         vm.myTournaments = tournamentService.getMyTournaments();
-    }
-
-    this.$onInit = getData;
+    };
 }
 
 MyTournamentsController.$inject = ['TournamentService'];
