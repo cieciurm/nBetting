@@ -8,6 +8,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 30px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -23,6 +24,13 @@
     width: 100%;
 }
 
+.team-row {
+    margin: 0 0 10px 0
+}
+
+.tournament-form {
+    margin-bottom: 10px;
+}
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
   /* Hide captions */

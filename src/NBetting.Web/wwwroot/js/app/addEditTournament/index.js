@@ -6,11 +6,13 @@ var nBettingControls = require('../controls');
 
 var addEditTorunamentCtrl = require('./AddEditTorunamentController');
 var addEditTorunamentComponent = require('./components/addEditTournamentFormComponent');
+var editTeamComponent = require('./components/editTeamComponent');
 
 var AddEditTournamentModule = angular.module('NBetting.AddEditTournament', [ngRoute, nBettingControls]);
 
 AddEditTournamentModule.controller(addEditTorunamentCtrl.name, addEditTorunamentCtrl)
-    .component(addEditTorunamentComponent.name, addEditTorunamentComponent);
+    .component(addEditTorunamentComponent.name, addEditTorunamentComponent)
+    .component(editTeamComponent.name, editTeamComponent);
 
 AddEditTournamentModule.config(function ($routeProvider) {
     $routeProvider
