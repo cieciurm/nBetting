@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container body-content">
         <div ng-view>
         </div>
@@ -71,6 +71,7 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+    @Html.Partial("_ApiUrls")
     <script>
         angular.element(document).ready(function () {
             angular.bootstrap(document, ['NBetting']);

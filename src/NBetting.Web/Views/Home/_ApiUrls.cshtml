@@ -1,0 +1,13 @@
+﻿<script>
+
+    function ApiUrlsService() {
+        var self = this;
+
+        self.getMyTournamentsUrl = function() {
+            return '@Url.Action("Index", "Tournaments")';
+        }
+    }
+
+    angular.module('NBetting.Common')
+           .service(ApiUrlsService.name, ApiUrlsService);
+</script>

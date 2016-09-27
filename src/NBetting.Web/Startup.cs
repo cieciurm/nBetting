@@ -59,7 +59,8 @@ namespace NBetting.Web
             app.UseMvc(routes =>
             {
                 routes.MapRoute(name: "Api",
-                    template: "api/{controller}/{action}"
+                    template: "api/{controller}/{action}",
+                    defaults: new { action = "Index"}
                 );
 
                 routes.MapRoute(

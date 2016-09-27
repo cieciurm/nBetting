@@ -2,7 +2,9 @@
     var vm = this;
 
     this.$onInit = function () {
-        vm.myTournaments = tournamentService.getMyTournaments();
+        tournamentService.getMyTournaments().then(function(tournaments) {
+            vm.myTournaments = tournaments;
+        });
     };
 }
 

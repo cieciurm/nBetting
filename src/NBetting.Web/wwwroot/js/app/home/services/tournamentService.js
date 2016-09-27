@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-function TournamentService() {
+function TournamentService($http, $q, ApiUrlsService) {
     function getTournamentsInProgress() {
         return [
             { name: "turniej#1", description: "To jest mój zarąbisty turniej w którym pozdrawiam all", startDate: "2016-09-20", finishDate: "2016-09-24" },
@@ -9,10 +9,17 @@ function TournamentService() {
     }
 
     function getMyTournaments() {
-        return [
-            { name: "turniej#3", description: "To jest mój zarąbisty turniej w którym pozdrawiam all", startDate: "2016-09-20", finishDate: "2016-09-24" },
-            { name: "turniej#4", description: "Mój drugi zarąbisty turniej w którym pozdrawiam all", startDate: "2016-09-20", finishDate: "2016-09-24" }
-        ];
+        var deferred = $q.defer();
+
+        var url = ApiUrlsService.getMyTournamentsUrl();
+
+        $http
+            .get(url)
+            .then(function (response) {
+                deferred.resolve(response.data);
+            });
+
+        return deferred.promise;
     }
 
     function getJoinableTournaments() {
@@ -25,5 +32,7 @@ function TournamentService() {
     this.getTournamentsInProgress = getTournamentsInProgress;
     this.getJoinableTournaments = getJoinableTournaments;
 }
+
+TournamentService.$inject = ['$http', '$q', 'ApiUrlsService'];
 
 module.exports = TournamentService;
