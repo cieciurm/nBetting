@@ -1,10 +1,14 @@
-﻿<script>
+﻿@using NBetting.Web.Helpers.Types
+@using NBetting.Web.Controllers
+
+<script>
 
     function ApiUrlsService() {
         var self = this;
 
         self.getMyTournamentsUrl = function() {
-            return '@Url.Action("Index", "Tournaments")';
+            return '@Url.RouteUrl("Api", new { controller = ControllerNamesHelper.GetName<TournamentsController>(),
+                   action = ControllerNamesHelper.GetActionName<TournamentsController>(x => x.Index()) })';
         }
     }
 
