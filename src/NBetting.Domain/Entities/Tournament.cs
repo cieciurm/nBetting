@@ -17,7 +17,27 @@ namespace NBetting.Domain.Entities
 
         public ICollection<Game> Games { get; set; }
 
-        public Tournament()
+        public User User { get; set; }
+
+        public int UserId { get; set; }
+
+        public Tournament(User owner,
+            string name, 
+            string description, 
+            DateTime startDate, 
+            DateTime finishDate, 
+            ICollection<Team> teams)
+           : this()
+        {
+            User = owner;
+            Name = name;
+            Description = description;
+            StartDate = startDate;
+            FinishDate = finishDate;
+            Teams = teams;
+        }
+
+        protected Tournament()
         {
             Teams = new List<Team>();
             Games = new List<Game>();

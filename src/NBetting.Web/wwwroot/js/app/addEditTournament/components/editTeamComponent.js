@@ -34,7 +34,8 @@ var EditTeamComponent = {
     bindings: {
         team: '<',
         onDelete: '&',
-        onChange: '&'
+        onChange: '&',
+        isEdit: '@'
     }
 }
 

@@ -14,6 +14,6 @@
 
         public Team Winner { get; set; }
 
-        public int WinnerId { get; set; }
+        public int? WinnerId { get; set; }
     }
 }

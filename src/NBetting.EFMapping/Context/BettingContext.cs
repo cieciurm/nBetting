@@ -3,7 +3,7 @@ using NBetting.Domain.Entities;
 
 namespace NBetting.EFMapping.Context
 {
-    public class BettingContext : DbContext, IBettingContext
+    public class BettingContext : DbContext, IBettingContext, IUnitOfWork
     {
         public DbSet<User> Users { get; set; }
 

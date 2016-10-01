@@ -6,6 +6,10 @@ namespace NBetting.EFMapping.Context
     public interface IBettingContext
     {
         DbSet<TEntity> DbSet<TEntity>() where TEntity : Entity;
+    }
+
+    public interface IUnitOfWork
+    {
         int Commit();
     }
 }

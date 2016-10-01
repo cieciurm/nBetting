@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Autofac;
 using NBetting.EFMapping.Context;
+using NBetting.Web.Infrastructure;
 using NBetting.Web.Infrastructure.Commands;
 using NBetting.Web.Infrastructure.Events;
 using NBetting.Web.Infrastructure.Queries;
@@ -17,7 +18,8 @@ namespace NBetting.Web.Configuration
 
         public static void RegisterServices(ContainerBuilder builder)
         {
-            builder.RegisterType<BettingContext>().As<IBettingContext>().InstancePerLifetimeScope();
+            builder.RegisterType<BettingContext>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
         }
 
         public static void RegisterExecutors(ContainerBuilder builder)

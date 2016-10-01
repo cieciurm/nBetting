@@ -53,9 +53,9 @@
     <Compile Include="Context\DbModelBuilderHelper.cs" />
     <Compile Include="Context\ConnectionStringProvider.cs" />
     <Compile Include="Context\IBettingContext.cs" />
-    <Compile Include="Migrations\201609211827460_init.cs" />
-    <Compile Include="Migrations\201609211827460_init.Designer.cs">
-      <DependentUpon>201609211827460_init.cs</DependentUpon>
+    <Compile Include="Migrations\201610011735492_init.cs" />
+    <Compile Include="Migrations\201610011735492_init.Designer.cs">
+      <DependentUpon>201610011735492_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +73,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609211827460_init.resx">
-      <DependentUpon>201609211827460_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610011735492_init.resx">
+      <DependentUpon>201610011735492_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
