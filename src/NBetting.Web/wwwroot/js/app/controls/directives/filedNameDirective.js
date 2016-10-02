@@ -6,7 +6,6 @@ function fieldName() {
         require: '^form',
         link: function (scope, element, attrs, form) {
             var inputWithNdModel = null;
-
             if (element.is('input')) {
                 inputWithNdModel = element.attr('name', attrs.fieldName);
             } else {

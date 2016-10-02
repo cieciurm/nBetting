@@ -35,8 +35,9 @@
                         <label>Team {{$index + 1}}</label>
                     </div>
                 </div>
-                <edit-team on-change="$ctrl.onTeamChanged($event)" 
-                           on-delete="$ctrl.onTeamDeleted($event)" team="team"></edit-team>
+                <edit-team ng-class="{ 'has-error': ($ctrl.form['team'+$index].$touched || $ctrl.form.$submitted) && $ctrl.form['team'+$index].$invalid }"
+                           on-change="$ctrl.onTeamChanged($event)" 
+                           on-delete="$ctrl.onTeamDeleted($event)" team="team" field-name="{{ 'team' + $index }}"></edit-team>
             </div>
             <button type="submit" class="btn btn-success" ng-click="$ctrl.addTeam()">Add team</button>
         </div>
