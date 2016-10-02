@@ -26,8 +26,9 @@ namespace NBetting.Web.Controllers
 
         public IActionResult Index()
         {
-            var tournaments = _queryExecutor.Execute(new GetMyTournamentsQuery());
-
+            //TODO : temporary
+            var firstUser = _users.Query().FirstOrDefault();
+            var tournaments = _queryExecutor.Execute(new GetMyTournamentsQuery(firstUser?.Id ?? 0));
             return Json(tournaments);
         }
 
@@ -39,7 +40,7 @@ namespace NBetting.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Save(AddEditTournamentModel model)
+        public IActionResult Save([FromBody]AddEditTournamentModel model)
         {
             var firstUser = _users.Query().FirstOrDefault();
             var command = new AddEditTournamentCommand(model, firstUser?.Id ?? 0);

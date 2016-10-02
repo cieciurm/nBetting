@@ -1,21 +1,30 @@
-﻿<form class="container">
+﻿<form class="container" name="$ctrl.form" novalidate>
     <div class="row tournament-form">
         <div class="col-md-4">
-            <div class="form-group">
+            <div ng-class="{ 'has-error': ($ctrl.form.name.$touched || $ctrl.form.$submitted) && $ctrl.form.name.$invalid }" class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" ng-model="$ctrl.viewModel.name" placeholder="Tournament name">
+                <input type="text" name="name" id="name" class="form-control" ng-model="$ctrl.viewModel.name" placeholder="Tournament name" ng-required="true">
+                <div ng-messages="$ctrl.form.name.$error" ng-if="$ctrl.form.name.$touched || $ctrl.form.$submitted">
+                    <p ng-message="required">Tournament name is required.</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="name">Description</label>
-                <textarea class="form-control" id="description" ng-model="$ctrl.viewModel.description" rows="3"></textarea>
+                <textarea class="form-control" name="description" ng-model="$ctrl.viewModel.description" rows="3"></textarea>
             </div>
-            <div class="form-group">
+            <div ng-class="{ 'has-error': ($ctrl.form.startDate.$touched || $ctrl.form.$submitted) && $ctrl.form.startDate.$invalid }" class="form-group">
                 <label>Start date</label>
-                <datepicker date="$ctrl.viewModel.startDate"></datepicker>
+                <datepicker date="$ctrl.viewModel.startDate" field-name="startDate" is-required="true"></datepicker>
+                <div ng-messages="$ctrl.form.startDate.$error" ng-if="$ctrl.form.startDate.$touched || $ctrl.form.$submitted">
+                    <p ng-message="required">Start date is required.</p>
+                </div>
             </div>
-            <div class="form-group">
+            <div ng-class="{ 'has-error': ($ctrl.form.endDate.$touched || $ctrl.form.$submitted) && $ctrl.form.endDate.$invalid }" class="form-group">
                 <label>End date</label>
-                <datepicker date="$ctrl.viewModel.endDate"></datepicker>
+                <datepicker date="$ctrl.viewModel.endDate" field-name="endDate" is-required="true"></datepicker>
+                <div ng-messages="$ctrl.form.endDate.$error" ng-if="$ctrl.form.endDate.$touched || $ctrl.form.$submitted">
+                    <p ng-message="required">End date is required.</p>
+                </div>
             </div>
         </div>
 

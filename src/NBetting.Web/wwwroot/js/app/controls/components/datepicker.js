@@ -22,7 +22,9 @@ var Datepicker = {
     controller: DatepickerController,
     templateUrl: 'views/controls/datepicker-template.html',
     bindings: {
-        date: '='
+        date: '=',
+        isRequired: '@',
+        fieldName: '@'
     }
 
 }

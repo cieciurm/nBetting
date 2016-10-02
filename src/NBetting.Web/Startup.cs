@@ -2,10 +2,12 @@
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NBetting.Web.Configuration;
+using Newtonsoft.Json.Serialization;
 
 namespace NBetting.Web
 {
@@ -28,7 +30,9 @@ namespace NBetting.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+            });
             ApplicationContainer = AutofacConfiguration.BuildContainer(services);
         }
 

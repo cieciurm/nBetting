@@ -6,9 +6,14 @@
     function ApiUrlsService() {
         var self = this;
 
-        self.getMyTournamentsUrl = function() {
+        self.getMyTournamentsUrl = function () {
             return '@Url.RouteUrl("Api", new { controller = ControllerNamesHelper.GetName<TournamentsController>(),
-                   action = ControllerNamesHelper.GetActionName<TournamentsController>(x => x.Index()) })';
+                    action = ControllerNamesHelper.GetActionName<TournamentsController>(x => x.Index()) })';
+        }
+
+        self.getAddEditTournamentUrl = function () {
+            return '@Url.RouteUrl("Api", new { controller = ControllerNamesHelper.GetName<TournamentsController>(),
+                    action = ControllerNamesHelper.GetActionName<TournamentsController>(x => x.Save(null)) })';
         }
     }
 

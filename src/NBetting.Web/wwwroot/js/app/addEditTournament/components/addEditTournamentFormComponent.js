@@ -2,7 +2,7 @@
 
 var AddEditTournamentViewModel = require('../viewModels/addEditTournamentViewModel');
 
-function AddEditTournamentFormComponentController() {
+function AddEditTournamentFormComponentController(addEditTournamentService) {
     var self = this;
 
     self.$onInit = function () {
@@ -14,8 +14,19 @@ function AddEditTournamentFormComponentController() {
     }
 
     self.save = function (tournament) {
-        //TODO
-        console.log(tournament);
+        if (self.form.$invalid)
+            return;
+
+        addEditTournamentService.addOrEditTournament(tournament)
+            .then(function () {
+                onTournamentSavedHandler();
+            });
+    }
+
+    function onTournamentSavedHandler() {
+        if (self.onTournamentSaved) {
+            self.onTournamentSaved();
+        }
     }
 
     self.addTeam = function() {
@@ -32,10 +43,15 @@ function AddEditTournamentFormComponentController() {
     }
 }
 
+AddEditTournamentFormComponentController.$inject = ['AddEditTournamentService'];
+
 var AddEditTournamentFormComponent = {
     name: 'addEditTournamentForm',
     controller: AddEditTournamentFormComponentController,
-    templateUrl: 'views/add-edit-tournament/add-edit-tournament-template.html'
+    templateUrl: 'views/add-edit-tournament/add-edit-tournament-template.html',
+    bindings: {
+        onTournamentSaved: '&'
+    }
 }
 
 module.exports = AddEditTournamentFormComponent;
