@@ -24,7 +24,6 @@ var Datepicker = {
     bindings: {
         date: '=',
         isRequired: '@',
-        fieldName: '@'
     }
 
 }
