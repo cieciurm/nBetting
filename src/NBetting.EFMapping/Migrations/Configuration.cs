@@ -1,7 +1,9 @@
+using System.Collections.Generic;
+using NBetting.Domain.Entities;
+using NBetting.EFMapping.Context;
 namespace NBetting.EFMapping.Migrations
 {
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -12,20 +14,26 @@ namespace NBetting.EFMapping.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(NBetting.EFMapping.Context.BettingContext context)
+        protected override void Seed(BettingContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            PopulateTournament(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void PopulateTournament(BettingContext context)
+        {
+            var kowalski = context.DbSet<User>().AsQueryable().SingleOrDefault(x => x.Login == "Jan Kowalski") ?? new User("Jan Kowalski");
+
+            var teams = new List<Team>
+            {
+                new Team("Legia Warszawa"),
+                new Team("Wis³a Kraków"),
+                new Team("Lechia Gdañsk"),
+                new Team("Zag³êbie Lublin")
+            };
+
+            var tournament = new Tournament(kowalski, "Ekstraklasa", "Najlepsza liga œwiata", DateTime.Now, DateTime.Now.AddMonths(10), teams);
+            context.DbSet<Tournament>().Add(tournament);
+            context.SaveChanges();
         }
     }
 }
