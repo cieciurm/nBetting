@@ -3,6 +3,7 @@
 var angular = require('angular');
 var angularUI = require('angular-ui-bootstrap');
 var datepicker = require('./components/datepicker');
+
 var fieldName = require('./directives/filedNameDirective');
 
 var Controls = angular.module('NBetting.UiControls', [angularUI]);

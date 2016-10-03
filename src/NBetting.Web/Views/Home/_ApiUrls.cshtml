@@ -2,7 +2,6 @@
 @using NBetting.Web.Controllers
 
 <script>
-
     function ApiUrlsService() {
         var self = this;
 
@@ -14,6 +13,10 @@
         self.getAddEditTournamentUrl = function () {
             return '@Url.RouteUrl("Api", new { controller = ControllerNamesHelper.GetName<TournamentsController>(),
                     action = ControllerNamesHelper.GetActionName<TournamentsController>(x => x.Save(null)) })';
+        }
+
+        self.getTournamentUrl = function (id) {
+            return 'api/tournaments/' + id;
         }
     }
 

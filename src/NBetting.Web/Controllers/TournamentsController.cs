@@ -33,6 +33,7 @@ namespace NBetting.Web.Controllers
         }
 
         [HttpGet]
+        [Route("api/tournaments/{id}")]
         public JsonResult Get(int id)
         {
             var tournament = _queryExecutor.Execute(new GetTournamentByIdQuery(id));

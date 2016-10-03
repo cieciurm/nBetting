@@ -31,7 +31,8 @@ AddEditTournamentModule.config(function ($routeProvider) {
             templateUrl: 'views/add-edit-tournament/index.html',
             controller: addEditTorunamentCtrl.name,
             controllerAs: 'ctrl',
-            caseInsensitiveMatch: true
+            caseInsensitiveMatch: true,
+            isEdit: true
         });
 });
 

@@ -23,7 +23,6 @@ var Datepicker = {
     templateUrl: 'views/controls/datepicker-template.html',
     bindings: {
         date: '=',
-        isRequired: '@',
     }
 
 }

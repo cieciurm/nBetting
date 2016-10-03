@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NBetting.Domain.Entities;
 
 namespace NBetting.Web.Models
 {
@@ -25,6 +26,17 @@ namespace NBetting.Web.Models
             StartDate = startDate;
             EndDate = endDate;
         }
+
+        public AddEditTournamentModel(Tournament tournament)
+            :this(tournament.Name, tournament.Description, tournament.StartDate, tournament.FinishDate)
+        {
+            Id = tournament.Id;
+
+            foreach (var team in tournament.Teams)
+            {
+                Teams.Add(new TeamModel(team));
+            }
+        }
     }
 
     public class TeamModel : IModelWithId
@@ -39,6 +51,12 @@ namespace NBetting.Web.Models
 
         public TeamModel()
         {
+        }
+
+        public TeamModel(Team team)
+        {
+            Id = team.Id;
+            Name = team.Name;
         }
     }
 }

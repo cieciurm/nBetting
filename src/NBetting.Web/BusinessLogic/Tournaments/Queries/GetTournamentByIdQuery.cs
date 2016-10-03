@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Data.Entity;
+using System.Linq;
+using NBetting.Domain.Entities;
+using NBetting.Web.Helpers.Querybale;
+using NBetting.Web.Infrastructure;
 using NBetting.Web.Infrastructure.Queries;
 using NBetting.Web.Models;
 
@@ -16,21 +21,22 @@ namespace NBetting.Web.BusinessLogic.Tournaments.Queries
 
     public class GetTournamentByIdQueryHandler : IQueryHandler<GetTournamentByIdQuery, AddEditTournamentModel>
     {
+        private readonly IRepository<Tournament> _repository;
+
+        public GetTournamentByIdQueryHandler(IRepository<Tournament> repository)
+        {
+            _repository = repository;
+        }
+
         public AddEditTournamentModel Handle(GetTournamentByIdQuery query)
         {
-            var model = new AddEditTournamentModel("Premier League", "", DateTime.Now, DateTime.Now.AddDays(14));
-            model.Id = 1;
-            model.Teams.Add(new TeamModel("Manchester United")
-            {
-                Id = 1
-            });
+            var tournament = _repository.Query()
+                .NotDeleted()
+                .Where(t => t.Id == query.Id)
+                .Include(t => t.Teams)
+                .SingleOrDefault();
 
-            model.Teams.Add(new TeamModel("Chelsea")
-            {
-                Id = 2
-            });
-
-            return model;
+            return new AddEditTournamentModel(tournament);
         }
     }
 }

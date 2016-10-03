@@ -1,12 +1,12 @@
 ﻿'user strict';
 
-function AddEditTournamentViewModel(name, description, startDate, endDate) {
+function AddEditTournamentViewModel(id, name, description, startDate, endDate, teams) {
     var self = this;
     self.name = name;
     self.description = description;
-    self.starDate = startDate;
+    self.startDate = startDate;
     self.endDate = endDate;
-    self.teams = [];
+    self.teams = teams || [];
 
     self.addNewTeam = function() {
         self.teams.push({

@@ -6,11 +6,22 @@ function AddEditTournamentFormComponentController(addEditTournamentService) {
     var self = this;
 
     self.$onInit = function () {
+        if (self.config && self.config.isEdit && self.config.id) {
+            edit(self.config.id);
+        } else {
+            add();
+        }
+    }
+
+    function edit(id) {
+        addEditTournamentService.getTournament(id)
+            .then(function (tournament) {
+                self.viewModel = tournament;
+            });
+    }
+
+    function add() {
         self.viewModel = new AddEditTournamentViewModel();
-        self.viewModel.startDate = new Date();
-        self.viewModel.addTeam({
-            name: "Manchaster United"
-        });
     }
 
     self.save = function (tournament) {
@@ -29,7 +40,7 @@ function AddEditTournamentFormComponentController(addEditTournamentService) {
         }
     }
 
-    self.addTeam = function() {
+    self.addTeam = function () {
         self.viewModel.addNewTeam();
     }
 
@@ -50,7 +61,8 @@ var AddEditTournamentFormComponent = {
     controller: AddEditTournamentFormComponentController,
     templateUrl: 'views/add-edit-tournament/add-edit-tournament-template.html',
     bindings: {
-        onTournamentSaved: '&'
+        onTournamentSaved: '&',
+        config: '<'
     }
 }
 
